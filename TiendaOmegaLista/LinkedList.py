@@ -56,8 +56,8 @@ class LinkedList:
         self.head = new_node
         self.tamanio = self.tamanio + 1
 
-    def insertar_inicio(self, codigo, name, telefono, correo):
-        new_nodo = Node(codigo, name, telefono, correo)
+    def insertar_inicio(self, codigo, name):
+        new_nodo = Cliente(codigo, name)
         if self.head is None:
             self.head = new_nodo
             return
@@ -193,7 +193,7 @@ class LinkedList:
     def print_list(self):
         current = self.head
         while current is not None:
-            print(current.name, current.codigo, end = ' ')
+            print(current.nombre, current.codigo, end = ' ')
             current = current.next
 
     # Buscar en la lista
@@ -204,4 +204,15 @@ class LinkedList:
                 return actual.nombre
             actual = actual.siguiente
         return None
+
+# Buscar por la data
+    def find_by(self, codigo):
+        current = self.head
+        while current is not None:
+            if current.codigo == codigo:
+                return current.codigo
+            else:
+                current = current.next
+        #return current
+        #raise Exception('El elemento no existe')
 
